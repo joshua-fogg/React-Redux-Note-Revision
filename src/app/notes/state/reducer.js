@@ -68,7 +68,9 @@ export function updateNewNote(text) {
   }
 
 const initialState = {
-  notes: {}
+  notes: {},
+  newNote: '',
+  themeType: 'darkTheme'
 };
 
 export default function reducer(state = initialState, action) {
