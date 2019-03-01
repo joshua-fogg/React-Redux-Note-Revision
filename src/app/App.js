@@ -1,18 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import NotesContainer from "./notes/components/NotesContainer";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./theme";
 
-class App extends Component {
-  render() {
-    return (
-      <ThemeProvider theme={this.props.lightTheme ? lightTheme : darkTheme}>
-        <NotesContainer />
-      </ThemeProvider>
-    );
-  }
-}
+const App = props => {
+  return (
+    <ThemeProvider theme={props.lightTheme ? lightTheme : darkTheme}>
+      <NotesContainer />
+    </ThemeProvider>
+  );
+};
 
 const mapStateToProps = state => {
   return {

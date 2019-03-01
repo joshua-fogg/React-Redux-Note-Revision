@@ -30,7 +30,6 @@ function loadNotesSuccess(notes) {
 }
 
 export function addNote(text) {
-  console.log("addNote: ", text);
   return {
     type: ADD_NOTE,
     noteOperation: {
@@ -40,7 +39,6 @@ export function addNote(text) {
   };
 }
 function addNoteSuccess(note) {
-  console.log("note success Input: ", note);
   return {
     type: ADD_NOTE_SUCCESS,
     newNote: note
@@ -56,17 +54,16 @@ export function deleteNote(noteId) {
   };
 }
 
+function deleteNoteSuccess(...args) {
+  return {
+    type: DELETE_NOTE_SUCCESS,
+    result: args
+  };
+}
 export function updateNewNote(text) {
   return {
     type: UPDATE_NEWNOTE,
     newNote: text
-  };
-}
-function deleteNoteSuccess(e) {
-  console.log("TODO: DELETE NOTE SUCCESS", e);
-  return {
-    type: DELETE_NOTE_SUCCESS
-    // TODO: THIS
   };
 }
 
@@ -78,33 +75,38 @@ export function toggleTheme(bool) {
 }
 
 const initialState = {
-  notes: {},
+  notes: [],
   newNote: "",
   lightTheme: true
 };
 
 export default function reducer(state = initialState, action) {
-  console.log("Action: ", action);
   switch (action.type) {
     case LOAD_NOTES:
       return state;
     case LOAD_NOTES_SUCCESS:
       return {
         ...state,
-        notes: action.notes
+        notes: Object.keys(action.notes).map(key => {
+          return action.notes[key];
+        }) // Convert to array as a nested object failes to re render due to shallwo comparison.
       };
     case ADD_NOTE:
       return state;
     case ADD_NOTE_SUCCESS:
-      console.warn("ADD NOTE SUCCESS REDUCER ", action, "\n\nXXXX");
-      return { ...state, newNote: "" };
-    case DELETE_NOTE:
       return {
         ...state,
-        notes: action.notes // TODO: IS THIS CORRECT???? -> Does service return new note list...
+        newNote: "",
+        notes: [...state.notes, action.newNote]
+        // Convert to array as a nested object failes to re render due to shallwo comparison.
       };
-    case DELETE_NOTE_SUCCESS:
+    case DELETE_NOTE:
       return state;
+    case DELETE_NOTE_SUCCESS:
+      return {
+        ...state,
+        newNote: ""
+      };
     case UPDATE_NEWNOTE:
       return {
         ...state,

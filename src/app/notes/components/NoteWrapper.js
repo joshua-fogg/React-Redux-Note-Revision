@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const NoteWrapper = styled.div`
@@ -37,10 +37,14 @@ const NoteWrapper = styled.div`
   }
 `;
 
-class StyledNoteWrapper extends Component {
-  render() {
-    return <NoteWrapper>{this.props.children.map(child => <span>{child}</span>)}</NoteWrapper>;
-  }
-}
+const StyledNoteWrapper = ({ children }) => {
+  return (
+    <NoteWrapper>
+      {children.map((child, i) => (
+        <span key={i}>{child}</span>
+      ))}
+    </NoteWrapper>
+  );
+};
 
 export default StyledNoteWrapper;

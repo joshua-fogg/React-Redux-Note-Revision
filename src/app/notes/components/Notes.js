@@ -62,7 +62,7 @@ class StyledNotes extends Component {
             Add
           </Button>
         </NoteWrapper>
-        {Object.values(this.props.notes).map((note, i) => (
+        {this.props.notes.map((note, i) => (
           <Note key={i} note={note} />
         ))}
       </Notes>

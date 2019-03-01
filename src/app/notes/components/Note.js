@@ -1,7 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
 
 import Button from "./Button";
+import { deleteNote, loadNotes } from "../state/reducer";
 
 const Note = styled.div`
     ${props => `background: ${props.theme.noteBackgroundColor};`}
@@ -19,16 +21,38 @@ const Note = styled.div`
   }
 `;
 
-class StyledNote extends Component {
-  render() {
-    return (
-      <Note>
-        <Button style={{ marginLeft: "20px" }}>Delete Note</Button>
-        <span style={{ width: "50px" }} />
-        <span>{this.props.note.text}</span>
-      </Note>
-    );
+const StyledNote = ({ deleteNote, note, key }) => {
+  return (
+    <Note>
+      <Button
+        onClick={() => {
+          deleteNote(note.id);
+        }}
+        style={{ marginLeft: "20px" }}
+      >
+        Delete Note
+      </Button>
+      <span style={{ width: "50px" }} />
+      <span>{note.text}</span>
+    </Note>
+  );
+};
+const mapStateToProps = (state) => {
+  return {
+
   }
 }
 
-export default StyledNote;
+const mapDispatchToProps = dispatch => {
+  return {
+    deleteNote: noteId => {
+      dispatch(deleteNote(noteId));
+      dispatch(loadNotes(noteId));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(StyledNote);
