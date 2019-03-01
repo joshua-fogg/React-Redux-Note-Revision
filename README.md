@@ -22,13 +22,13 @@ npm run start
 
 The sample application currently loads a list of notes.
 
-1. Extract the #addNoteWrapper div in src/app/notes/components/Notes.js into a new component
-1. Wire up this new component to dispatch and handle the appropriate redux actions
-1. Add a hover effect to notes based on theme variables
-1. Create a new Dark theme
-1. Extract the #themeToggle button in Notes.js to a new component that toggles between the Light and Dark themes
-1. Improve the look and feel of this toggle component
-1. Add the ability to delete a note
+1. [x] Extract the #addNoteWrapper div in src/app/notes/components/Notes.js into a new component
+1. [X] Wire up this new component to dispatch and handle the appropriate redux actions
+1. [X] Add a hover effect to notes based on theme variables
+1. [X] Create a new Dark theme
+1. [X] Extract the #themeToggle button in Notes.js to a new component that toggles between the Light and Dark themes
+1. [x] Improve the look and feel of this toggle component
+1. [X] Add the ability to delete a note
 
 Add comments and unit tests to your code where appropriate.
 If you need to skip a task that is fine, make sure you submit a working solution.
