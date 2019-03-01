@@ -35,8 +35,15 @@ class StyledNotes extends Component {
         </header>
         <NoteWrapper>
           <label>Add another:</label>
-          <input type="text" placeholder="text for new note" />
-          <button>Add</button>
+          <input
+            id="newNoteInput"
+            onChange={e => {
+              console.log("TODO:... Onchange input", e.target.value);
+            }}
+            type="text"
+            placeholder="text for new note"
+          />
+          <button onClick={this.props.addNote}>Add</button>
         </NoteWrapper>
         {Object.values(this.props.notes).map((note, i) => (
           <Note key={i} note={note} />
