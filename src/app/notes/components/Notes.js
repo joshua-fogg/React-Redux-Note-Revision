@@ -22,11 +22,23 @@ const Notes = styled.div`
 `;
 
 class StyledNotes extends Component {
+  constructor(props) {
+    super(props);
+    // TODO: refactor into redux action and reducer pair
+    this.state = {
+      newNote: ""
+    };
+  }
   componentDidMount() {
     this.props.loadNotes();
   }
 
+  handleOnChangeNote = e => {
+    this.setState({ newNote: e.target.value });
+  };
+
   render() {
+      console.warn('RENDER EVENT')
     return (
       <Notes>
         <header>
@@ -37,14 +49,22 @@ class StyledNotes extends Component {
           <label>Add another:</label>
           <input
             id="newNoteInput"
-            onChange={e => {
-              console.log("TODO:... Onchange input", e.target.value);
-            }}
+            onChange={this.handleOnChangeNote}
             type="text"
             placeholder="text for new note"
           />
-          <button onClick={this.props.addNote}>Add</button>
+          {"TODO: DELETE THIS ===== " +
+            JSON.stringify(typeof this.props.addNote)}
+          <button
+            onClick={() => {
+                console.log('LOCAL STATE: ', this.state)
+              this.props.addNote(this.state.newNote);
+            }}
+          >
+            Add
+          </button>
         </NoteWrapper>
+        {JSON.stringify(this.props.notes)}
         {Object.values(this.props.notes).map((note, i) => (
           <Note key={i} note={note} />
         ))}
