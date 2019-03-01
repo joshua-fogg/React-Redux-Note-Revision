@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Note from "./Note";
 import Title from "./Title";
+import ThemeToggle from "./ThemeToggle";
 import NoteWrapper from "./NoteWrapper";
 
 const Notes = styled.div`
@@ -39,7 +40,11 @@ class StyledNotes extends Component {
       <Notes>
         <header>
           <Title>Notes</Title>
-          <button id="themeToggle">Toggle theme</button>
+          <ThemeToggle
+            id="toggleButton"
+            onClick={this.props.toggleTheme}
+            label="Toggle theme"
+          />
         </header>
         <NoteWrapper>
           <label>Add another:</label>

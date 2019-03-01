@@ -9,6 +9,9 @@ export const DELETE_NOTE = `${ns}DELETE_NOTE`;
 export const DELETE_NOTE_SUCCESS = `${ns}DELETE_NOTE_SUCCESS`;
 export const UPDATE_NEWNOTE = `${ns}UPDATE_NEWNOTE`;
 
+const tm = "theme/";
+export const TOGGLE_THEME = `${tm}TOGGLE_THEME`;
+
 export function loadNotes() {
   return {
     type: LOAD_NOTES,
@@ -54,23 +57,30 @@ export function deleteNote(noteId) {
 }
 
 export function updateNewNote(text) {
-    return {
-      type: UPDATE_NEWNOTE,
-      newNote: text
-    };
-  }
-  function deleteNoteSuccess(e) {
-    console.log("TODO: DELETE NOTE SUCCESS", e);
-    return {
-      type: DELETE_NOTE_SUCCESS
-      // TODO: THIS
-    };
-  }
+  return {
+    type: UPDATE_NEWNOTE,
+    newNote: text
+  };
+}
+function deleteNoteSuccess(e) {
+  console.log("TODO: DELETE NOTE SUCCESS", e);
+  return {
+    type: DELETE_NOTE_SUCCESS
+    // TODO: THIS
+  };
+}
+
+export function toggleTheme(bool) {
+  return {
+    type: TOGGLE_THEME,
+    lightTheme: !bool
+  };
+}
 
 const initialState = {
   notes: {},
-  newNote: '',
-  themeType: 'darkTheme'
+  newNote: "",
+  lightTheme: true
 };
 
 export default function reducer(state = initialState, action) {
@@ -99,6 +109,11 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         newNote: action.newNote
+      };
+    case TOGGLE_THEME:
+      return {
+        ...state,
+        lightTheme: action.lightTheme
       };
     default:
       return state;

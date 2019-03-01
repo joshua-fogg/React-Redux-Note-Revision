@@ -31,7 +31,7 @@ export const darkTheme = {
   pageTitle: "lightgrey",
   pageText: "lightgrey",
   noteBackground: "#4d79ff",
-  noteHoverBackground: "#336600",
+  noteHoverBackground: "grey",
   noteBorderStyle: "1px solid rgba(0,0,0,0.1)",
   glabel: "grey",
   textFieldBackground: "grey",

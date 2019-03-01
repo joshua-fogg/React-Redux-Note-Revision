@@ -2,16 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import NotesContainer from "./notes/components/NotesContainer";
 import { ThemeProvider } from "styled-components";
-import {lightTheme, darkTheme} from "./theme";
+import { lightTheme, darkTheme } from "./theme";
 
-const themeDict = {
-    lightTheme,
-    darkTheme
-}
 class App extends Component {
   render() {
     return (
-      <ThemeProvider theme={themeDict[this.props.themeType]}>
+      <ThemeProvider theme={this.props.lightTheme ? lightTheme : darkTheme}>
         <NotesContainer />
       </ThemeProvider>
     );
@@ -20,7 +16,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    themeType: state.themeType
+    lightTheme: state.lightTheme
   };
 };
 
