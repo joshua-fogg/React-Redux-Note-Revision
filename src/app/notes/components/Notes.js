@@ -3,22 +3,26 @@ import styled from "styled-components";
 
 import Note from "./Note";
 import Title from "./Title";
+import Button from './Button';
 import ThemeToggle from "./ThemeToggle";
 import NoteWrapper from "./NoteWrapper";
 
 const Notes = styled.div`
   ${props => `background: ${props.theme.pageBackground};`}
   min-height: 100%;
-  padding: 20px;
+  padding: 10%;
+  display: flex-block;
   header {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
   }
-  #themeToggle {
-    border: 0;
-    padding: 8px 16px;
-    font-size: 12px;
+  @media all and (max-width: 600px) {
+    padding: 16px;
+  }
+  @media all and (max-width: 470px) {
+    padding: 5px;
   }
 `;
 
@@ -35,7 +39,6 @@ class StyledNotes extends Component {
   };
 
   render() {
-    console.warn("RENDER EVENT");
     return (
       <Notes>
         <header>
@@ -55,9 +58,9 @@ class StyledNotes extends Component {
             type="text"
             placeholder="text for new note"
           />
-          <button disabled={!this.props.newNote} onClick={this.onSubmit}>
+          <Button disabled={!this.props.newNote} onClick={this.onSubmit}>
             Add
-          </button>
+          </Button>
         </NoteWrapper>
         {Object.values(this.props.notes).map((note, i) => (
           <Note key={i} note={note} />

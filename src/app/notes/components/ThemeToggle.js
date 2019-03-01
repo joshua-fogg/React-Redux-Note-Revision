@@ -4,22 +4,37 @@ import styled from "styled-components";
 import { toggleTheme } from "../state/reducer";
 
 const Btn = styled.button`
-  #themeToggle {
-    border: 0;
-    padding: 8px 16px;
-    font-size: 12px;
+  @keyframes shiftingSands {
+    ${props => `from {background-color: ${props.theme.toggleBtnColor};}`}
+    ${props => `to {background-color: ${props.theme.toggleBtnColorOpp};}`}
+  }
+  border: 2px;
+  border-radius: 45px;
+  padding: 8px 16px;
+  font-size: 12px;
+  ${props => `background: ${props.theme.toggleBtnColor};`}
+  &:hover {
+    cursor: pointer;
+    animation-name: shiftingSands;
+    animation-duration: 4s;
   }
 `;
 
 const ToggleButton = props => (
-  <Btn id="themeToggle" onClick={() => {props.toggleTheme(props.lightTheme)}} children={props.label} />
+  <Btn
+    id="themeToggle"
+    onClick={() => {
+      props.toggleTheme(props.lightTheme);
+    }}
+    children={props.label}
+  />
 );
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     lightTheme: state.lightTheme
-  }
-}
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {

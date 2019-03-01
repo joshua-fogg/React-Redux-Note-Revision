@@ -1,5 +1,5 @@
 export const lightTheme = {
-  space: [0, 4, 8, 16, 32],
+  space: [0, 4, 10, 16, 32],
   fontSizes: {
     alpha: 48,
     beta: 32,
@@ -7,7 +7,7 @@ export const lightTheme = {
     epsilon: 16
   },
   pageBackground: "papayawhip",
-  pageTitle: "blueViolet",
+  pageTitle: "tan",
   pageText: "slategrey",
   noteBackground: "#f8f8f8",
   noteHoverBackground: "#fbe2e2",
@@ -17,7 +17,9 @@ export const lightTheme = {
   textFieldFocusBackground: "lightsteelblue",
   textFieldBorderStyle: "0",
   buttonBackground: "blueViolet",
-  buttonText: "white"
+  buttonText: "white",
+  toggleBtnColor: 'lightblue',
+  toggleBtnColorOpp: 'orange'
 };
 export const darkTheme = {
   space: [0, 4, 8, 16, 32],
@@ -38,6 +40,7 @@ export const darkTheme = {
   textFieldFocusBackground: "lightsteelblue",
   textFieldBorderStyle: "0",
   buttonBackground: "blueViolet",
-  buttonText: "white"
+  buttonText: "white",
+  toggleBtnColor: 'orange',
+  toggleBtnColorOpp: 'lightBlue'
 };
-

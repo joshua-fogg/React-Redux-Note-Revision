@@ -20,18 +20,26 @@ const NoteWrapper = styled.div`
             background: ${props => props.theme.textFieldFocusBackground};
         }
     }
-    button {
-        padding: 8px 16px;
-        border:0;
-        background-color: ${props => props.theme.buttonBackground};
-        color: ${props => props.theme.buttonText};
-    }
 `}
+@media all and (max-width: 470px) {
+    display: flex;
+    flex-wrap: wrap;
+    span {
+        padding: 10px;
+        margin-left: 10%;
+        margin-right: 5%;
+        width: 100%;
+        button {
+            width: 90%
+            margin:auto;
+        }
+    }
+  }
 `;
 
 class StyledNoteWrapper extends Component {
   render() {
-    return <NoteWrapper>{this.props.children}</NoteWrapper>;
+    return <NoteWrapper>{this.props.children.map(child => <span>{child}</span>)}</NoteWrapper>;
   }
 }
 
