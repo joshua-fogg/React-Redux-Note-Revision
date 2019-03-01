@@ -42,6 +42,3 @@ Pick from our suggestions below or implement something of your own design.
     - have the theme change automatically depending on time of day
     - touch up the design to add your own flare
 
-Thanks for all your efforts. We look forward to seeing what you come up with.
-
-Actionstep Frontend Team.
