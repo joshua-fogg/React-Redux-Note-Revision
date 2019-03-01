@@ -1,11 +1,12 @@
 import { connect } from "react-redux";
 import Notes from "./Notes";
 import { loadNotes } from "../state";
-import { addNote, deleteNote } from "../state/reducer";
+import { addNote, deleteNote, updateNewNote } from "../state/reducer";
 
 function mapStateToProps(state, ownProps) {
   return {
-    notes: state.notes
+    notes: state.notes,
+    newNote: state.newNote
   };
 }
 
@@ -16,10 +17,12 @@ function mapDispatchToProps(dispatch, ownProps) {
     },
     addNote: text => {
       dispatch(addNote(text));
-    //   dispatch(loadNotes());
     },
     deleteNote: id => {
       dispatch(deleteNote(id));
+    },
+    onChangeNewNote: (text) => {
+        dispatch(updateNewNote(text))
     }
   };
 }

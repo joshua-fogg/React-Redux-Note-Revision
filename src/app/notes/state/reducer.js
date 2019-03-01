@@ -7,6 +7,7 @@ export const ADD_NOTE = `${ns}ADD_NOTE`;
 export const ADD_NOTE_SUCCESS = `${ns}ADD_NOTE_SUCCESS`;
 export const DELETE_NOTE = `${ns}DELETE_NOTE`;
 export const DELETE_NOTE_SUCCESS = `${ns}DELETE_NOTE_SUCCESS`;
+export const UPDATE_NEWNOTE = `${ns}UPDATE_NEWNOTE`;
 
 export function loadNotes() {
   return {
@@ -51,12 +52,21 @@ export function deleteNote(noteId) {
     }
   };
 }
-function deleteNoteSuccess() {
-  return {
-    type: DELETE_NOTE_SUCCESS
-    // TODO: THIS
-  };
-}
+
+export function updateNewNote(text) {
+    return {
+      type: UPDATE_NEWNOTE,
+      newNote: text
+    };
+  }
+  function deleteNoteSuccess(e) {
+    console.log("TODO: DELETE NOTE SUCCESS", e);
+    return {
+      type: DELETE_NOTE_SUCCESS
+      // TODO: THIS
+    };
+  }
+
 const initialState = {
   notes: {}
 };
@@ -74,8 +84,8 @@ export default function reducer(state = initialState, action) {
     case ADD_NOTE:
       return state;
     case ADD_NOTE_SUCCESS:
-      console.warn("ADD NOTE SUCCESS REDUCER ", state.notes, "\n\nXXXX");
-      return { ...state };
+      console.warn("ADD NOTE SUCCESS REDUCER ", action, "\n\nXXXX");
+      return { ...state, newNote: "" };
     case DELETE_NOTE:
       return {
         ...state,
@@ -83,6 +93,11 @@ export default function reducer(state = initialState, action) {
       };
     case DELETE_NOTE_SUCCESS:
       return state;
+    case UPDATE_NEWNOTE:
+      return {
+        ...state,
+        newNote: action.newNote
+      };
     default:
       return state;
   }
