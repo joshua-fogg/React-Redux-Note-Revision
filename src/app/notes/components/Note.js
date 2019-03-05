@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 import Button from "./Button";
-import { deleteNote, loadNotes } from "../state/reducer";
+import { deleteNote, loadNotes } from "../state/actions";
 
 const Note = styled.div`
     ${props => `background: ${props.theme.noteBackgroundColor};`}

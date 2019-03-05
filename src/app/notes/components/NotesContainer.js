@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import Notes from "./Notes";
 import { loadNotes } from "../state";
-import { addNote, deleteNote, updateNewNote } from "../state/reducer";
+import { addNote, deleteNote, updateNewNote } from "../state/actions";
 
 function mapStateToProps(state, ownProps) {
   return {

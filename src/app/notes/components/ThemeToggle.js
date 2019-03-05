@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { toggleTheme } from "../state/reducer";
+import { toggleTheme } from "../state/actions";
 
 const Btn = styled.button`
   @keyframes shiftingSands {
